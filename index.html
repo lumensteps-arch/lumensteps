@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LumenSteps – Modern ABA Practice Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #1bafc8;
+      --teal:   #2dc4b2;
+      --navy:   #1a2e4a;
+      --text:   #3a4a5c;
+      --light:  #f4fbfc;
+      --white:  #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(135deg, #2ab8d0 0%, #1a9dbf 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    /* pinwheel icon made with CSS */
+    .pinwheel {
+      width: 38px;
+      height: 38px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .pinwheel svg { width: 38px; height: 38px; }
+
+    .nav-logo span {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 500;
+      opacity: .92;
+      transition: opacity .2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    .btn-demo {
+      background: var(--white);
+      color: var(--blue);
+      border: none;
+      padding: 9px 22px;
+      border-radius: 24px;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-demo:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--white);
+      position: relative;
+      padding: 80px 80px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      min-height: 560px;
+      overflow: hidden;
+    }
+
+    .hero-wave {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      flex: 0 0 auto;
+      max-width: 500px;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 80px;
+    }
+
+    .hero-title {
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+    .hero-title .accent { color: var(--blue); }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .hero-desc {
+      font-size: .97rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+
+    .download-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: .82rem;
+      line-height: 1.25;
+      transition: transform .15s, box-shadow .15s;
+      min-width: 155px;
+    }
+    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.22); }
+    .store-btn .store-icon { width: 26px; height: 26px; flex-shrink: 0; }
+    .store-btn .store-label { font-size: .68rem; opacity: .8; display: block; }
+    .store-btn .store-name  { font-size: .92rem; font-weight: 700; display: block; }
+
+    /* ── LAPTOP MOCKUP ── */
+    .hero-right {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 0;
+    }
+
+    .laptop-wrap {
+      position: relative;
+      width: min(580px, 100%);
+    }
+
+    .laptop-screen-outer {
+      background: #1a1a1e;
+      border-radius: 18px 18px 0 0;
+      padding: 14px 14px 0;
+      box-shadow: 0 20px 60px rgba(0,0,0,.28), 0 0 0 1px #333;
+    }
+
+    .laptop-screen-inner {
+      border-radius: 6px;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16/10;
+      position: relative;
+    }
+
+    .laptop-screen-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* camera dot */
+    .laptop-screen-outer::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #444;
+      margin: 0 auto 8px;
+    }
+
+    .laptop-base {
+      background: linear-gradient(to bottom, #d0d0d0, #b8b8b8);
+      height: 22px;
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+    }
+
+    .laptop-foot {
+      background: linear-gradient(to bottom, #a8a8a8, #c0c0c0);
+      height: 6px;
+      width: 60%;
+      margin: 0 auto;
+      border-radius: 0 0 6px 6px;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 80px 80px 80px;
+      background: var(--white);
+    }
+
+    .features-label {
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .features-title {
+      text-align: center;
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 48px;
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--light);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,175,200,.12); }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #d4f5f0, #b8eaf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .card-icon svg { width: 26px; height: 26px; color: var(--teal); }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: .88rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    /* ── DOWNLOAD SECTION ── */
+    .download-section {
+      background: linear-gradient(135deg, #1bafc8 0%, #2dc4b2 100%);
+      padding: 72px 80px;
+      text-align: center;
+    }
+
+    .download-section h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .download-section p {
+      color: rgba(255,255,255,.85);
+      font-size: 1rem;
+      margin-bottom: 36px;
+    }
+
+    .download-section .download-grid {
+      justify-content: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 28px 48px;
+      font-size: .82rem;
+    }
+
+    footer a { color: rgba(255,255,255,.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    /* ── SCROLL ARROW ── */
+    .scroll-arrow {
+      text-align: center;
+      padding: 16px 0 40px;
+      animation: bounce 1.8s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+    .scroll-arrow svg { width: 28px; height: 28px; color: #aaa; }
+
+    @media (max-width: 860px) {
+      .hero { flex-direction: column; padding: 48px 28px 0; }
+      .hero-left { max-width: 100%; padding-bottom: 40px; }
+      .hero-title { font-size: 2.6rem; }
+      .features { padding: 56px 28px; }
+      nav { padding: 0 24px; }
+      .nav-links { gap: 20px; }
+      .download-section { padding: 56px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <!-- Pinwheel SVG logo -->
+    <svg class="pinwheel" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 20 C20 20 10 10 18 2 C26 -6 30 8 20 20Z" fill="#f5c842"/>
+      <path d="M20 20 C20 20 30 10 38 18 C46 26 32 30 20 20Z" fill="#4caf7d"/>
+      <path d="M20 20 C20 20 30 30 22 38 C14 46 10 32 20 20Z" fill="#e8543a"/>
+      <path d="M20 20 C20 20 10 30 2 22 C-6 14 8 10 20 20Z" fill="#4a9fd4"/>
+    </svg>
+    <span>LumenSteps</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#download">Download</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button class="btn-demo">Request Demo</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="hero-title">Lumen<span class="accent">Steps</span></h1>
+    <p class="hero-sub">Modern ABA practice management<br>for BCBAs, RBTs, and clinics.</p>
+    <p class="hero-desc">Manage programs, behaviors, sessions, documents, and reports in one secure, easy-to-use platform built for ABA professionals.</p>
+
+    <div class="download-grid">
+      <!-- Microsoft Store -->
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="10" height="10" fill="#f35325"/>
+          <rect x="13" y="1" width="10" height="10" fill="#81bc06"/>
+          <rect x="1" y="13" width="10" height="10" fill="#05a6f0"/>
+          <rect x="13" y="13" width="10" height="10" fill="#ffba08"/>
+        </svg>
+        <div>
+          <span class="store-label">Get it from</span>
+          <span class="store-name">Microsoft Store</span>
+        </div>
+      </a>
+
+      <!-- Mac App Store -->
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <div>
+          <span class="store-label">Download on the</span>
+          <span class="store-name">Mac App Store</span>
+        </div>
+      </a>
+
+      <!-- Google Play -->
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.18 23.76c.3.17.64.24.99.2L14.54 12 3.17.04c-.35-.04-.69.03-.99.2C1.6.73 1.2 1.47 1.2 2.4v19.2c0 .93.4 1.67 1 2.16z" fill="#ea4335"/>
+          <path d="M22.52 10.28l-3.11-1.8L15.66 12l3.75 3.52 3.11-1.8c.89-.51.89-1.93 0-2.44z" fill="#fbbc04"/>
+          <path d="M3.18.24L14.54 12 18.29 8.47 5.18.17C4.53-.22 3.73-.07 3.18.24z" fill="#4285f4"/>
+          <path d="M3.18 23.76L14.54 12 18.29 15.53 5.18 23.83c-.65.39-1.45.24-2-.07z" fill="#34a853"/>
+        </svg>
+        <div>
+          <span class="store-label">GET IT ON</span>
+          <span class="store-name">Google Play</span>
+        </div>
+      </a>
+
+      <!-- App Store -->
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        <div>
+          <span class="store-label">Download on the</span>
+          <span class="store-name">App Store</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="laptop-wrap">
+      <div class="laptop-screen-outer">
+        <div class="laptop-screen-inner">
+          <!-- REPLACE src with your actual screenshot filename, e.g. "screenshot.png" -->
+          <img src="screenshot.png" alt="LumenSteps app screenshot" />
+        </div>
+      </div>
+      <div class="laptop-base"></div>
+      <div class="laptop-foot"></div>
+    </div>
+  </div>
+
+  <!-- wave bg -->
+  <svg class="hero-wave" viewBox="0 0 1440 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,80 C360,160 1080,0 1440,80 L1440,160 L0,160 Z" fill="#e8f8fb" opacity=".6"/>
+    <path d="M0,120 C480,60 960,160 1440,100 L1440,160 L0,160 Z" fill="#d0f2ee" opacity=".4"/>
+  </svg>
+</section>
+
+<!-- SCROLL ARROW -->
+<div class="scroll-arrow">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9"/>
+  </svg>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <p class="features-label">Built for ABA Professionals</p>
+  <h2 class="features-title">Everything you need, all in one place</h2>
+
+  <div class="feature-cards">
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+        </svg>
+      </div>
+      <h3>Track programs and goals</h3>
+      <p>Create, monitor, and update programs with measurable goals and real-time progress tracking.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+      </div>
+      <h3>Manage behaviors and session notes</h3>
+      <p>Log behaviors, take session notes, and visualize trends to inform better decisions.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+      </div>
+      <h3>Organize documents and reports</h3>
+      <p>Store client documents securely and generate professional reports in seconds.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+        </svg>
+      </div>
+      <h3>Streamlined clinic dashboards</h3>
+      <p>Get a clear snapshot of your caseload, team activity, and key metrics at a glance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section class="download-section" id="download">
+  <h2>Ready to get started?</h2>
+  <p>Available on all your devices — desktop, tablet, and mobile.</p>
+
+  <div class="download-grid">
+    <a href="#" class="store-btn">
+      <svg class="store-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="10" height="10" fill="#f35325"/>
+        <rect x="13" y="1" width="10" height="10" fill="#81bc06"/>
+        <rect x="1" y="13" width="10" height="10" fill="#05a6f0"/>
+        <rect x="13" y="13" width="10" height="10" fill="#ffba08"/>
+      </svg>
+      <div>
+        <span class="store-label">Get it from</span>
+        <span class="store-name">Microsoft Store</span>
+      </div>
+    </a>
+
+    <a href="#" class="store-btn">
+      <svg class="store-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <div>
+        <span class="store-label">Download on the</span>
+        <span class="store-name">Mac App Store</span>
+      </div>
+    </a>
+
+    <a href="#" class="store-btn">
+      <svg class="store-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.18 23.76c.3.17.64.24.99.2L14.54 12 3.17.04c-.35-.04-.69.03-.99.2C1.6.73 1.2 1.47 1.2 2.4v19.2c0 .93.4 1.67 1 2.16z" fill="#ea4335"/>
+        <path d="M22.52 10.28l-3.11-1.8L15.66 12l3.75 3.52 3.11-1.8c.89-.51.89-1.93 0-2.44z" fill="#fbbc04"/>
+        <path d="M3.18.24L14.54 12 18.29 8.47 5.18.17C4.53-.22 3.73-.07 3.18.24z" fill="#4285f4"/>
+        <path d="M3.18 23.76L14.54 12 18.29 15.53 5.18 23.83c-.65.39-1.45.24-2-.07z" fill="#34a853"/>
+      </svg>
+      <div>
+        <span class="store-label">GET IT ON</span>
+        <span class="store-name">Google Play</span>
+      </div>
+    </a>
+
+    <a href="#" class="store-btn">
+      <svg class="store-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <div>
+        <span class="store-label">Download on the</span>
+        <span class="store-name">App Store</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <p>© 2026 LumenSteps · <a href="#">Privacy Policy</a> · <a href="mailto:hello@lumensteps.com">Contact</a></p>
+</footer>
+
+</body>
+</html>
