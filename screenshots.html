@@ -335,8 +335,6 @@
   <button class="filter-btn" data-filter="programs">Programs</button>
   <button class="filter-btn" data-filter="behaviors">Behaviors</button>
   <button class="filter-btn" data-filter="sessions">Sessions</button>
-  <button class="filter-btn" data-filter="documents">Documents</button>
-  <button class="filter-btn" data-filter="dashboard">Dashboard</button>
   <button class="filter-btn" data-filter="toolbox">Toolbox</button>
   <button class="filter-btn" data-filter="billing">Billing</button>
 </div>
@@ -346,29 +344,29 @@
 
   <!-- 1 -->
   <div class="gallery-item" data-category="programs" data-index="0" onclick="openLightbox(0)">
-    <img class="gallery-thumb" src="screenshot.png" alt="Program Data View" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <img class="gallery-thumb" src="screenshot.png" alt="Active Programs" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="thumb-placeholder" style="display:none">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
       <span>screenshot.png</span>
     </div>
     <div class="gallery-info">
       <p class="gallery-tag">Programs</p>
-      <h3>Program Data View</h3>
-      <p>Track % correct, independence, and mastery trends with live graphs and stat cards.</p>
+      <h3>Active Programs</h3>
+      <p>See every active program for a client at a glance — targets, trial counts, and status.</p>
     </div>
   </div>
 
   <!-- 2 -->
   <div class="gallery-item" data-category="programs" data-index="1" onclick="openLightbox(1)">
-    <img class="gallery-thumb" src="screenshot-targets.png" alt="Target Progress" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <img class="gallery-thumb" src="screenshot-targets.png" alt="Program List" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="thumb-placeholder" style="display:none">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
       <span>screenshot-targets.png</span>
     </div>
     <div class="gallery-info">
       <p class="gallery-tag">Programs</p>
-      <h3>Target Progress</h3>
-      <p>See mastery status for each target at a glance — In Progress, Mastered, or Not Started.</p>
+      <h3>Program List</h3>
+      <p>Track trials and mastery status across every program — In Progress, Mastered, or Not Started.</p>
     </div>
   </div>
 
@@ -401,30 +399,30 @@
   </div>
 
   <!-- 5 -->
-  <div class="gallery-item" data-category="documents" data-index="4" onclick="openLightbox(4)">
-    <img class="gallery-thumb" src="screenshot-documents.png" alt="Documents" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <div class="gallery-item" data-category="behaviors" data-index="4" onclick="openLightbox(4)">
+    <img class="gallery-thumb" src="screenshot-documents.png" alt="Behavior List" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="thumb-placeholder" style="display:none">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
       <span>screenshot-documents.png</span>
     </div>
     <div class="gallery-info">
-      <p class="gallery-tag">Documents</p>
-      <h3>Document Library</h3>
-      <p>Store assessments, BIPs, reports, and more — organized and accessible in seconds.</p>
+      <p class="gallery-tag">Behaviors</p>
+      <h3>Behavior List</h3>
+      <p>Every tracked behavior for a client in one list, with progress status at a glance.</p>
     </div>
   </div>
 
   <!-- 6 -->
-  <div class="gallery-item" data-category="dashboard" data-index="5" onclick="openLightbox(5)">
-    <img class="gallery-thumb" src="screenshot-dashboard.png" alt="Dashboard Overview" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+  <div class="gallery-item" data-category="toolbox" data-index="5" onclick="openLightbox(5)">
+    <img class="gallery-thumb" src="screenshot-dashboard.png" alt="Session Tools" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
     <div class="thumb-placeholder" style="display:none">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       <span>screenshot-dashboard.png</span>
     </div>
     <div class="gallery-info">
-      <p class="gallery-tag">Dashboard</p>
-      <h3>Client Dashboard</h3>
-      <p>A full overview of your caseload — widgets, metrics, and quick access to everything.</p>
+      <p class="gallery-tag">Toolbox</p>
+      <h3>Session Tools</h3>
+      <p>Token boards, timers, and break cards RBTs can pull up right from the session screen.</p>
     </div>
   </div>
 
@@ -525,12 +523,12 @@
 
   // ── LIGHTBOX ──
   const screenshots = [
-    { src: 'screenshot.png',           tag: 'Programs',  name: 'Program Data View',   desc: 'Track % correct, independence, and mastery trends with live graphs and stat cards.' },
-    { src: 'screenshot-targets.png',   tag: 'Programs',  name: 'Target Progress',     desc: 'See mastery status for each target — In Progress, Mastered, or Not Started.' },
+    { src: 'screenshot.png',           tag: 'Programs',  name: 'Active Programs',     desc: 'See every active program for a client at a glance — targets, trial counts, and status.' },
+    { src: 'screenshot-targets.png',   tag: 'Programs',  name: 'Program List',        desc: 'Track trials and mastery status across every program — In Progress, Mastered, or Not Started.' },
     { src: 'screenshot-sessions.png',  tag: 'Sessions',  name: 'Session Details',     desc: 'Capture session notes and collect signatures — all in one streamlined view.' },
     { src: 'screenshot-behaviors.png', tag: 'Behaviors', name: 'Behavior Tracking',   desc: 'Log frequency, duration, and ABC data with real-time counters and timers.' },
-    { src: 'screenshot-documents.png', tag: 'Documents', name: 'Document Library',    desc: 'Store assessments, BIPs, reports, and more — organized and accessible in seconds.' },
-    { src: 'screenshot-dashboard.png', tag: 'Dashboard', name: 'Client Dashboard',    desc: 'A full overview of your caseload — widgets, metrics, and quick access to everything.' },
+    { src: 'screenshot-documents.png', tag: 'Behaviors', name: 'Behavior List',       desc: 'Every tracked behavior for a client in one list, with progress status at a glance.' },
+    { src: 'screenshot-dashboard.png', tag: 'Toolbox',   name: 'Session Tools',       desc: 'Token boards, timers, and break cards RBTs can pull up right from the session screen.' },
     { src: 'screenshot-toolbox.png',   tag: 'Toolbox',   name: 'RBT Session Toolbox', desc: 'Token boards, timers, break cards, and more — built-in tools RBTs can pull up mid-session.' },
     { src: 'screenshot-activity.png',  tag: 'Billing',   name: 'BCBA Activity Log',   desc: 'Log billable services with date, duration, and status, then export a signed timesheet.' },
   ];
