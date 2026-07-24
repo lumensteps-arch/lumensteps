@@ -337,6 +337,8 @@
   <button class="filter-btn" data-filter="sessions">Sessions</button>
   <button class="filter-btn" data-filter="documents">Documents</button>
   <button class="filter-btn" data-filter="dashboard">Dashboard</button>
+  <button class="filter-btn" data-filter="toolbox">Toolbox</button>
+  <button class="filter-btn" data-filter="billing">Billing</button>
 </div>
 
 <!-- GALLERY -->
@@ -426,6 +428,34 @@
     </div>
   </div>
 
+  <!-- 7 -->
+  <div class="gallery-item" data-category="toolbox" data-index="6" onclick="openLightbox(6)">
+    <img class="gallery-thumb" src="screenshot-toolbox.png" alt="RBT Toolbox" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="thumb-placeholder" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      <span>screenshot-toolbox.png</span>
+    </div>
+    <div class="gallery-info">
+      <p class="gallery-tag">Toolbox</p>
+      <h3>RBT Session Toolbox</h3>
+      <p>Token boards, timers, break cards, and more — built-in tools RBTs can pull up mid-session.</p>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="gallery-item" data-category="billing" data-index="7" onclick="openLightbox(7)">
+    <img class="gallery-thumb" src="screenshot-activity.png" alt="BCBA Activity Log" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="thumb-placeholder" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span>screenshot-activity.png</span>
+    </div>
+    <div class="gallery-info">
+      <p class="gallery-tag">Billing</p>
+      <h3>BCBA Activity Log</h3>
+      <p>Log billable services with date, duration, and status, then export a signed timesheet.</p>
+    </div>
+  </div>
+
 </div>
 
 <!-- LIGHTBOX -->
@@ -501,6 +531,8 @@
     { src: 'screenshot-behaviors.png', tag: 'Behaviors', name: 'Behavior Tracking',   desc: 'Log frequency, duration, and ABC data with real-time counters and timers.' },
     { src: 'screenshot-documents.png', tag: 'Documents', name: 'Document Library',    desc: 'Store assessments, BIPs, reports, and more — organized and accessible in seconds.' },
     { src: 'screenshot-dashboard.png', tag: 'Dashboard', name: 'Client Dashboard',    desc: 'A full overview of your caseload — widgets, metrics, and quick access to everything.' },
+    { src: 'screenshot-toolbox.png',   tag: 'Toolbox',   name: 'RBT Session Toolbox', desc: 'Token boards, timers, break cards, and more — built-in tools RBTs can pull up mid-session.' },
+    { src: 'screenshot-activity.png',  tag: 'Billing',   name: 'BCBA Activity Log',   desc: 'Log billable services with date, duration, and status, then export a signed timesheet.' },
   ];
 
   let visibleIndexes = screenshots.map((_, i) => i);
