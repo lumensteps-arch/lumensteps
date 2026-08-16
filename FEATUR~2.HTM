@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features – Lumen Steps LLC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:  #1bafc8;
+      --teal:  #2dc4b2;
+      --navy:  #1a2e4a;
+      --text:  #3a4a5c;
+      --light: #f4fbfc;
+      --white: #ffffff;
+    }
+
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(135deg, #2ab8d0 0%, #1a9dbf 100%);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 64px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo span { font-size: 1.35rem; font-weight: 700; color: var(--white); letter-spacing: -.3px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--white); text-decoration: none; font-size: .95rem; font-weight: 500; opacity: .92; transition: opacity .2s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; border-bottom: 2px solid rgba(255,255,255,.7); padding-bottom: 2px; }
+    .btn-demo { background: var(--white); color: var(--blue); border: none; padding: 9px 22px; border-radius: 24px; font-size: .9rem; font-weight: 700; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+    .btn-demo:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--white);
+      position: relative;
+      padding: 72px 80px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      overflow: hidden;
+      min-height: 500px;
+    }
+    .hero-wave { position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none; }
+
+    .hero-left { flex: 0 0 auto; max-width: 460px; position: relative; z-index: 2; padding-bottom: 72px; }
+    .hero-tag { display: inline-block; background: #e8f8fb; color: var(--blue); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 18px; }
+    .hero-title { font-size: 2.8rem; font-weight: 800; line-height: 1.1; color: var(--navy); margin-bottom: 16px; }
+    .hero-title .accent { color: var(--blue); }
+    .hero-desc { font-size: .97rem; line-height: 1.7; color: var(--text); margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary { background: var(--blue); color: #fff; border: none; padding: 13px 28px; border-radius: 30px; font-size: .95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(27,175,200,.35); }
+    .btn-outline { background: transparent; color: var(--blue); border: 2px solid var(--blue); padding: 11px 26px; border-radius: 30px; font-size: .95rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: background .15s, color .15s; }
+    .btn-outline:hover { background: var(--blue); color: #fff; }
+
+    /* laptop */
+    .hero-right { flex: 1 1 auto; display: flex; justify-content: center; align-items: center; position: relative; z-index: 2; padding-bottom: 40px; }
+    .laptop-wrap { position: relative; width: min(580px, 100%); filter: drop-shadow(0 24px 48px rgba(0,0,0,.22)); }
+    .laptop-lid { background: #2a2a2e; border-radius: 14px 14px 0 0; padding: 10px 10px 0; border: 1.5px solid #444; border-bottom: none; }
+    .laptop-lid::before { content: ''; display: block; width: 7px; height: 7px; border-radius: 50%; background: #555; margin: 0 auto 6px; }
+    .laptop-screen { border-radius: 4px; overflow: hidden; background: #000; aspect-ratio: 16/10; }
+    .laptop-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+    .laptop-hinge { background: linear-gradient(to bottom, #555, #3a3a3a); height: 5px; border-left: 1.5px solid #444; border-right: 1.5px solid #444; }
+    .laptop-base { background: linear-gradient(to bottom, #d8d8d8, #c4c4c4); border-radius: 0 0 10px 10px; height: 36px; border: 1.5px solid #bbb; border-top: none; display: flex; align-items: center; justify-content: center; }
+    .laptop-base::after { content: ''; width: 22%; height: 55%; background: linear-gradient(to bottom, #c0c0c0, #b0b0b0); border-radius: 4px; border: 1px solid #aaa; }
+    .laptop-feet { display: flex; justify-content: space-between; padding: 0 12%; }
+    .laptop-feet span { width: 10%; height: 5px; background: #aaa; border-radius: 0 0 4px 4px; }
+
+    /* ── CORE FEATURES GRID ── */
+    .core-features { padding: 80px 80px; background: var(--white); }
+    .section-title { text-align: center; font-size: 1.9rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .section-sub { text-align: center; font-size: .95rem; color: var(--text); opacity: .8; margin-bottom: 52px; }
+
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+    .feat-card { background: var(--light); border-radius: 16px; padding: 28px 22px; text-align: center; transition: transform .2s, box-shadow .2s; }
+    .feat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(27,175,200,.12); }
+    .feat-icon { width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .feat-icon svg { width: 28px; height: 28px; }
+    .feat-card h3 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .feat-card p { font-size: .83rem; line-height: 1.6; color: var(--text); }
+
+    /* icon colors */
+    .ic-blue   { background: #daf3f8; color: #1bafc8; }
+    .ic-teal   { background: #d4f5f0; color: #2dc4b2; }
+    .ic-purple { background: #ede8f8; color: #7c5cbf; }
+    .ic-orange { background: #fef3e6; color: #e8943a; }
+    .ic-green  { background: #e4f5e9; color: #3aab5c; }
+    .ic-indigo { background: #e8edf8; color: #4a6abf; }
+
+    /* ── DETAIL SECTIONS ── */
+    .detail { padding: 80px; display: flex; align-items: center; gap: 72px; }
+    .detail.reverse { flex-direction: row-reverse; }
+    .detail:nth-child(odd) { background: var(--light); }
+    .detail:nth-child(even) { background: var(--white); }
+
+    .detail-img { flex: 0 0 48%; }
+    .detail-img .app-frame {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.12);
+      overflow: hidden;
+      border: 1px solid #e4eef2;
+    }
+    .detail-img .app-frame img { width: 100%; display: block; }
+
+    /* placeholder when no image yet */
+    .detail-img .app-frame .img-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #e8f8fb, #d4f5f0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--blue);
+    }
+    .detail-img .app-frame .img-placeholder svg { width: 36px; height: 36px; opacity: .5; }
+    .detail-img .app-frame .img-placeholder span { font-size: .8rem; opacity: .6; }
+
+    .detail-text { flex: 1 1 auto; }
+    .detail-text h2 { font-size: 1.75rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; line-height: 1.2; }
+    .detail-text .sub { font-size: 1rem; color: var(--text); margin-bottom: 28px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .92rem; line-height: 1.5; }
+    .check-list li::before { content: ''; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--teal); background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-size: 12px; background-repeat: no-repeat; background-position: center; margin-top: 2px; }
+
+    /* ── VALUE PROPS ── */
+    .value-props { padding: 80px; background: var(--white); }
+    .value-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 32px; margin-top: 52px; }
+    .value-card { text-align: center; }
+    .value-icon { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .value-icon svg { width: 32px; height: 32px; }
+    .value-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .value-card p { font-size: .85rem; line-height: 1.65; color: var(--text); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #1bafc8 0%, #2dc4b2 100%);
+      padding: 72px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .cta-left h2 { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .cta-left p { color: rgba(255,255,255,.85); font-size: .95rem; max-width: 380px; }
+    .cta-right { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+    .store-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+    .store-btn { display: inline-flex; align-items: center; gap: 10px; background: #111; color: #fff; text-decoration: none; border-radius: 10px; padding: 10px 18px; font-size: .82rem; line-height: 1.25; transition: transform .15s, box-shadow .15s; min-width: 148px; }
+    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.22); }
+    .store-btn .store-icon { width: 24px; height: 24px; flex-shrink: 0; }
+    .store-btn .store-label { font-size: .65rem; opacity: .75; display: block; }
+    .store-btn .store-name { font-size: .88rem; font-weight: 700; display: block; }
+    .btn-demo-white { background: #fff; color: var(--blue); border: none; padding: 13px 32px; border-radius: 30px; font-size: 1rem; font-weight: 700; cursor: pointer; text-decoration: none; white-space: nowrap; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy); padding: 52px 80px 28px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand .nav-logo { margin-bottom: 12px; }
+    .footer-brand p { color: rgba(255,255,255,.55); font-size: .83rem; line-height: 1.6; }
+    .footer-col h4 { color: #fff; font-size: .88rem; font-weight: 700; margin-bottom: 14px; }
+    .footer-col a { display: block; color: rgba(255,255,255,.55); text-decoration: none; font-size: .83rem; margin-bottom: 8px; transition: color .2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; text-align: center; color: rgba(255,255,255,.35); font-size: .78rem; }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:6px; z-index:201; }
+    .hamburger span { display:block; width:24px; height:2.5px; background:#fff; border-radius:2px; transition:transform .3s,opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+    .nav-drawer { display:none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 28px; }
+      .hero { padding: 56px 40px 0; gap: 28px; }
+      .hero-title { font-size: 2.2rem; }
+      .core-features, .value-props { padding: 60px 40px; }
+      .detail { padding: 60px 40px; gap: 40px; }
+      .cta-section { padding: 56px 40px; }
+    }
+    @media (max-width: 680px) {
+      nav { padding: 14px 20px; height: auto; position: relative; flex-wrap: wrap; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-drawer { display:block; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(10,25,45,.97); z-index:199; transform:translateX(100%); transition:transform .3s ease; padding:90px 32px 40px; }
+      .nav-drawer.open { transform: translateX(0); }
+      .nav-drawer ul { list-style:none; display:flex; flex-direction:column; }
+      .nav-drawer ul li { border-bottom: 1px solid rgba(255,255,255,.08); }
+      .nav-drawer ul a { display:block; color:#fff; text-decoration:none; font-size:1.3rem; font-weight:600; padding:18px 0; }
+      .nav-drawer ul a:hover { color: #2dc4b2; }
+      .nav-drawer .drawer-btn { margin-top:28px; display:block; background:#1bafc8; color:#fff; text-align:center; padding:15px; border-radius:14px; font-size:1rem; font-weight:700; text-decoration:none; }
+      .hero { flex-direction: column; padding: 36px 20px 0; min-height: auto; }
+      .hero-left { max-width: 100%; padding-bottom: 0; }
+      .hero-title { font-size: 1.9rem; }
+      .hero-sub { font-size: 1rem; }
+      .hero-right { padding-bottom: 0; width: 100%; }
+      .laptop-wrap { width: 100%; }
+      .hero-btns { flex-direction: column; gap: 10px; }
+      .btn-primary, .btn-outline { text-align: center; }
+      .core-features, .value-props { padding: 48px 20px; }
+      .section-title { font-size: 1.5rem; }
+      .feat-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .feat-card { padding: 18px 14px; }
+      .feat-card h3 { font-size: .85rem; }
+      .detail, .detail.reverse { flex-direction: column; padding: 36px 20px; gap: 24px; }
+      .detail-img { flex: none; width: 100%; }
+      .detail-text h2 { font-size: 1.3rem; }
+      .value-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .cta-section { flex-direction: column; padding: 48px 20px; }
+      .cta-left h2 { font-size: 1.35rem; }
+      .cta-right { align-items: flex-start; width: 100%; }
+      .store-row { flex-wrap: wrap; justify-content: flex-start; gap: 8px; }
+      .store-btn { min-width: unset; flex: 1 1 130px; padding: 9px 12px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+      footer { padding: 36px 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- DEV BANNER -->
+<div style="background:linear-gradient(90deg,#1a2e4a,#1e3d5c);color:#fff;text-align:center;padding:9px 16px;font-size:.82rem;line-height:1.5;">
+  <span style="background:#f5c842;color:#1a2e4a;font-weight:700;border-radius:12px;padding:2px 10px;margin-right:8px;font-size:.72rem;white-space:nowrap;">IN DEVELOPMENT</span>
+  Launching <strong>July 2026</strong>. <a href="contact.html" style="color:#7fd4e8;text-decoration:underline;">Get notified →</a>
+</div>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="screenshots.html">Screenshots</a></li>
+    <li><a href="index.html#download">Download</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="drawer-btn">Request Demo</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 20 C20 20 10 10 18 2 C26 -6 30 8 20 20Z" fill="#f5c842"/>
+      <path d="M20 20 C20 20 30 10 38 18 C46 26 32 30 20 20Z" fill="#4caf7d"/>
+      <path d="M20 20 C20 20 30 30 22 38 C14 46 10 32 20 20Z" fill="#e8543a"/>
+      <path d="M20 20 C20 20 10 30 2 22 C-6 14 8 10 20 20Z" fill="#4a9fd4"/>
+    </svg>
+    <span>Lumen Steps LLC</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="features.html" class="active">Features</a></li>
+    <li><a href="screenshots.html">Screenshots</a></li>
+    <li><a href="index.html#download">Download</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><button class="btn-demo" onclick="location.href='contact.html'">Request Demo</button></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Features</span>
+    <h1 class="hero-title">Everything your ABA clinic needs,<br><span class="accent">all in one platform</span></h1>
+    <p class="hero-desc">Lumen Steps LLC helps BCBAs, RBTs, and clinics manage programs, behaviors, sessions, documents, and reports in one secure, easy-to-use platform.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Request Demo</a>
+      <a href="#detail-programs" class="btn-outline">Explore Screenshots</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="laptop-wrap">
+      <div class="laptop-lid">
+        <div class="laptop-screen">
+          <img src="screenshot.png" alt="Lumen Steps LLC app" />
+        </div>
+      </div>
+      <div class="laptop-hinge"></div>
+      <div class="laptop-base"></div>
+      <div class="laptop-feet"><span></span><span></span></div>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#e8f8fb" opacity=".6"/>
+    <path d="M0,90 C480,40 960,120 1440,80 L1440,120 L0,120 Z" fill="#d0f2ee" opacity=".4"/>
+  </svg>
+</section>
+
+<!-- CORE FEATURES GRID -->
+<section class="core-features">
+  <h2 class="section-title">Core Features</h2>
+  <p class="section-sub">Powerful tools designed specifically for ABA professionals.</p>
+  <div class="feat-grid">
+
+    <div class="feat-card">
+      <div class="feat-icon ic-blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </div>
+      <h3>Program Management</h3>
+      <p>Create and manage programs, targets, and mastery criteria with ease.</p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon ic-teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Behavior Tracking</h3>
+      <p>Track behaviors, frequency, duration, ABC data, and more in real time.</p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon ic-purple">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Session Notes</h3>
+      <p>Capture session data quickly with customizable notes and outcome measures.</p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon ic-orange">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Documents &amp; File Storage</h3>
+      <p>Store documents securely and access them anytime from any device.</p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon ic-green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Reports &amp; Analytics</h3>
+      <p>Generate reports and visualize data to make better clinical decisions.</p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon ic-indigo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h3>Scheduling &amp; Session Management</h3>
+      <p>Schedule sessions, manage caseloads, and stay on top of your day.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- DETAIL 1: Programs -->
+<section class="detail" id="detail-programs">
+  <div class="detail-img">
+    <div class="app-frame">
+      <img src="screenshot-targets.png" alt="Program List" style="width:100%;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>screenshot-targets.png</span>
+      </div>
+    </div>
+  </div>
+  <div class="detail-text">
+    <h2>Track programs and targets</h2>
+    <p class="sub">Monitor progress and mastery with clarity.</p>
+    <ul class="check-list">
+      <li>Create individualized programs and multiple targets</li>
+      <li>Track % correct, independence, and mastery goals</li>
+      <li>Visual graphs show trends over time</li>
+      <li>Quickly see what's working and adjust as needed</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DETAIL 2: Sessions -->
+<section class="detail reverse" id="detail-sessions">
+  <div class="detail-img">
+    <div class="app-frame">
+      <img src="screenshot-sessions.png" alt="Session Details" style="width:100%;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>screenshot-sessions.png</span>
+      </div>
+    </div>
+  </div>
+  <div class="detail-text">
+    <h2>Log behaviors and session data in real time</h2>
+    <p class="sub">Capture accurate data when it matters most.</p>
+    <ul class="check-list">
+      <li>Record behaviors, ABC data, and replacement skills</li>
+      <li>Use timers and counters for precise tracking</li>
+      <li>View session summaries and visual charts instantly</li>
+      <li>Keep your data accurate, consistent, and accessible</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DETAIL 3: Documents -->
+<section class="detail" id="detail-documents">
+  <div class="detail-img">
+    <div class="app-frame">
+      <img src="screenshot-documents.png" alt="Behavior List" style="width:100%;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span>screenshot-documents.png</span>
+      </div>
+    </div>
+  </div>
+  <div class="detail-text">
+    <h2>Keep every behavior on record</h2>
+    <p class="sub">See status and history for each tracked behavior at a glance.</p>
+    <ul class="check-list">
+      <li>List every tracked behavior for a client in one place</li>
+      <li>See status — In Acquisition, Mastered, and more</li>
+      <li>Jump straight into frequency, interval, or duration data</li>
+      <li>Stay on top of what's improving and what needs attention</li>
+    </ul>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="value-props">
+  <h2 class="section-title">Built for the way you work</h2>
+  <p class="section-sub">Enterprise-grade features without the enterprise complexity.</p>
+  <div class="value-grid">
+
+    <div class="value-card">
+      <div class="value-icon ic-blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>HIPAA-Aligned Security</h3>
+      <p>Your data is protected with encryption and industry-leading security practices.</p>
+    </div>
+
+    <div class="value-card">
+      <div class="value-icon ic-green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h3>Real-Time Data Insights</h3>
+      <p>Live dashboards and analytics help you make informed decisions faster.</p>
+    </div>
+
+    <div class="value-card">
+      <div class="value-icon ic-teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Team Collaboration</h3>
+      <p>Work together seamlessly with your team across roles and locations.</p>
+    </div>
+
+    <div class="value-card">
+      <div class="value-icon ic-indigo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <h3>Built for Clinics of All Sizes</h3>
+      <p>From solo practitioners to multi-site organizations.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-left">
+    <h2>Launching July 2026</h2>
+    <p>Lumen Steps LLC is in active development. Request a demo or reach out to get early access info — we'd love to hear from you.</p>
+  </div>
+  <div class="cta-right">
+    <div class="store-row">
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="none"><rect x="1" y="1" width="10" height="10" fill="#f35325"/><rect x="13" y="1" width="10" height="10" fill="#81bc06"/><rect x="1" y="13" width="10" height="10" fill="#05a6f0"/><rect x="13" y="13" width="10" height="10" fill="#ffba08"/></svg>
+        <div><span class="store-label">Get it from</span><span class="store-name">Microsoft Store</span></div>
+      </a>
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div><span class="store-label">Download on the</span><span class="store-name">Mac App Store</span></div>
+      </a>
+    </div>
+    <div class="store-row">
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.99.2L14.54 12 3.17.04c-.35-.04-.69.03-.99.2C1.6.73 1.2 1.47 1.2 2.4v19.2c0 .93.4 1.67 1 2.16z" fill="#ea4335"/><path d="M22.52 10.28l-3.11-1.8L15.66 12l3.75 3.52 3.11-1.8c.89-.51.89-1.93 0-2.44z" fill="#fbbc04"/><path d="M3.18.24L14.54 12 18.29 8.47 5.18.17C4.53-.22 3.73-.07 3.18.24z" fill="#4285f4"/><path d="M3.18 23.76L14.54 12 18.29 15.53 5.18 23.83c-.65.39-1.45.24-2-.07z" fill="#34a853"/></svg>
+        <div><span class="store-label">GET IT ON</span><span class="store-name">Google Play</span></div>
+      </a>
+      <a href="#" class="store-btn">
+        <svg class="store-icon" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div><span class="store-label">Download on the</span><span class="store-name">App Store</span></div>
+      </a>
+    </div>
+    <a href="#" class="btn-demo-white">Request Demo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="display:flex;align-items:center;gap:8px;text-decoration:none;margin-bottom:12px;">
+        <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><path d="M20 20 C20 20 10 10 18 2 C26 -6 30 8 20 20Z" fill="#f5c842"/><path d="M20 20 C20 20 30 10 38 18 C46 26 32 30 20 20Z" fill="#4caf7d"/><path d="M20 20 C20 20 30 30 22 38 C14 46 10 32 20 20Z" fill="#e8543a"/><path d="M20 20 C20 20 10 30 2 22 C-6 14 8 10 20 20Z" fill="#4a9fd4"/></svg>
+        <span style="color:#fff;font-weight:700;font-size:1.1rem;">Lumen Steps LLC</span>
+      </a>
+      <p>Modern ABA practice management for BCBAs, RBTs, and clinics.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <a href="features.html">Features</a>
+      <a href="#">Screenshots</a>
+      <a href="#">Download</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:lumensteps@gmail.com">lumensteps@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Lumen Steps LLC. All rights reserved.</div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('navDrawer');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+</script>
+</body>
+</html>
