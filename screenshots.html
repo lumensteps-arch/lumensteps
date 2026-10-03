@@ -444,6 +444,34 @@
     </div>
   </div>
 
+  <!-- 8 -->
+  <div class="gallery-item" data-category="billing" data-index="7" onclick="openLightbox(7)">
+    <img class="gallery-thumb" src="screenshot-eligibility.png" alt="Insurance Eligibility Check" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="thumb-placeholder" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+      <span>screenshot-eligibility.png</span>
+    </div>
+    <div class="gallery-info">
+      <p class="gallery-tag">Billing</p>
+      <h3>Insurance Eligibility Check</h3>
+      <p>Check a client's insurance coverage in real time, right from their profile — no separate clearinghouse login.</p>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="gallery-item" data-category="billing" data-index="8" onclick="openLightbox(8)">
+    <img class="gallery-thumb" src="screenshot-claims.png" alt="Submit Insurance Claims" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="thumb-placeholder" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+      <span>screenshot-claims.png</span>
+    </div>
+    <div class="gallery-info">
+      <p class="gallery-tag">Billing</p>
+      <h3>Submit Insurance Claims</h3>
+      <p>Turn a completed session note directly into a claim and send it to the payer — no manual data entry into a separate billing system.</p>
+    </div>
+  </div>
+
 </div>
 
 <!-- LIGHTBOX -->
@@ -522,6 +550,8 @@
     { src: 'screenshot-documents.png', tag: 'Behaviors', name: 'Behavior List',       desc: 'Every tracked behavior for a client in one list, with progress status at a glance.' },
     { src: 'screenshot-toolbox.png',   tag: 'Toolbox',   name: 'RBT Session Toolbox', desc: 'Token boards, timers, break cards, and more — built-in tools RBTs can pull up mid-session.' },
     { src: 'screenshot-activity.png',  tag: 'Billing',   name: 'BCBA Activity Log',   desc: 'Log billable services with date, duration, and status, then export a signed timesheet.' },
+    { src: 'screenshot-eligibility.png', tag: 'Billing', name: 'Insurance Eligibility Check', desc: 'Check a client\'s insurance coverage in real time, right from their profile — no separate clearinghouse login.' },
+    { src: 'screenshot-claims.png',    tag: 'Billing',   name: 'Submit Insurance Claims', desc: 'Turn a completed session note directly into a claim and send it to the payer — no manual data entry into a separate billing system.' },
   ];
 
   let visibleIndexes = screenshots.map((_, i) => i);
