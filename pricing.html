@@ -57,6 +57,32 @@
     .billing-note p { font-size:.88rem; line-height:1.65; color:var(--text); }
     .billing-note strong { color:var(--navy); }
 
+
+    /* WORKED EXAMPLES */
+    .examples-section { padding:16px 80px 72px; }
+    .example-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; max-width:960px; margin:0 auto; }
+    .example-card { background:var(--light); border-radius:18px; padding:30px 30px 26px; border:1px solid #dcecef; }
+    .example-card h3 { font-size:1.05rem; font-weight:800; color:var(--navy); margin-bottom:4px; }
+    .example-card .ex-sub { font-size:.84rem; opacity:.8; margin-bottom:16px; line-height:1.5; }
+    .ex-rows { list-style:none; margin-bottom:14px; }
+    .ex-rows li { display:flex; justify-content:space-between; gap:12px; font-size:.88rem; padding:8px 0; border-bottom:1px solid #dcecef; }
+    .ex-rows li span:last-child { font-weight:600; color:var(--navy); white-space:nowrap; }
+    .ex-total { display:flex; justify-content:space-between; align-items:baseline; font-weight:800; color:var(--navy); font-size:1.05rem; }
+    .ex-total span:last-child { font-size:1.5rem; color:var(--teal); }
+    .ex-note { font-size:.8rem; opacity:.75; margin-top:10px; line-height:1.55; }
+
+    /* INCLUDED / EXTRAS */
+    .incl-section { padding:0 80px 72px; }
+    .incl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; max-width:960px; margin:0 auto; }
+    .incl-card { background:#fff; border:2px solid #e4f0f2; border-radius:18px; padding:28px 30px; }
+    .incl-card h3 { font-size:1.05rem; font-weight:800; color:var(--navy); margin-bottom:14px; }
+    .incl-card ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .incl-card li { font-size:.9rem; line-height:1.55; padding-left:22px; position:relative; }
+    .incl-card li::before { content:'✓'; position:absolute; left:0; color:var(--teal); font-weight:800; }
+    .incl-card.extras li::before { content:'•'; color:var(--blue); }
+    .sample-note { max-width:960px; margin:24px auto 0; background:#e4f8f5; border-radius:16px; padding:20px 26px; font-size:.9rem; line-height:1.65; }
+    .sample-note strong { color:var(--navy); }
+
     /* COMPARISON TABLE */
     .compare-section { padding:16px 80px 80px; background:var(--light); }
     .compare-wrap { max-width:960px; margin:0 auto; background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(26,46,74,.08); }
@@ -99,6 +125,7 @@
       nav { padding:0 28px; }
       .plans-section, .faq-section { padding:40px; }
       .compare-section { padding:16px 40px 60px; }
+      .examples-section, .incl-section { padding-left:40px; padding-right:40px; }
       .cta-section { padding:56px 40px; }
       footer { padding:48px 40px 24px; }
       .footer-top { grid-template-columns:1fr 1fr; gap:28px; }
@@ -118,6 +145,7 @@
       .plans-section { padding:24px 20px 48px; }
       .plan-card { padding:28px 22px; }
       .compare-section { padding:8px 20px 48px; }
+      .examples-section, .incl-section { padding-left:20px; padding-right:20px; }
       table.compare th, table.compare td { padding:12px 10px; font-size:.78rem; }
       .faq-section { padding:48px 20px; }
       .cta-section { padding:48px 20px; }
@@ -220,6 +248,67 @@
   </div>
 </section>
 
+
+<!-- WORKED EXAMPLES -->
+<section class="examples-section">
+  <p class="section-label">Real Numbers</p>
+  <h2 class="section-title">What you'd actually pay</h2>
+  <p class="section-sub">Two common setups, worked out line by line. No hidden multipliers.</p>
+  <div class="example-grid">
+    <div class="example-card">
+      <h3>Solo BCBA with 6 clients</h3>
+      <p class="ex-sub">One BCBA plus a part-time RBT and a billing helper (3 staff accounts).</p>
+      <ul class="ex-rows">
+        <li><span>Solo plan, flat monthly rate</span><span>$30</span></li>
+        <li><span>6 active clients (cap is 10)</span><span>$0 extra</span></li>
+        <li><span>3 staff accounts (cap is 3)</span><span>$0 extra</span></li>
+      </ul>
+      <div class="ex-total"><span>Monthly total</span><span>$30</span></div>
+      <p class="ex-note">Your bill stays at $30 whether you have 1 client or 10. Past 10 active clients or 3 staff, move to the Clinic plan.</p>
+    </div>
+    <div class="example-card">
+      <h3>Clinic with 5 active clients</h3>
+      <p class="ex-sub">One BCBA, three RBTs, and an admin (5 staff accounts).</p>
+      <ul class="ex-rows">
+        <li><span>5 active clients &times; $10</span><span>$50</span></li>
+        <li><span>5 staff accounts</span><span>$0 extra</span></li>
+        <li><span>Sample clients used for training</span><span>$0 extra</span></li>
+      </ul>
+      <div class="ex-total"><span>Monthly total</span><span>$50</span></div>
+      <p class="ex-note">If one client is discharged, the next daily recalculation drops you to 4 &times; $10 = $40. Hiring three more RBTs changes nothing: staff are never billed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="incl-section">
+  <div class="incl-grid">
+    <div class="incl-card">
+      <h3>Included in every plan</h3>
+      <ul>
+        <li>Staff accounts: up to 3 on Solo, unlimited on Clinic</li>
+        <li>Document storage for client files, notes, and reports</li>
+        <li>Insurance claim tools, including claim fix-it help</li>
+        <li>Parent portal, so caregivers can see schedules and sign notes</li>
+        <li>Scheduling, timesheets, and report generation</li>
+        <li>Full data export, any time, even if you cancel</li>
+        <li>A signed BAA before any client data goes in</li>
+      </ul>
+    </div>
+    <div class="incl-card extras">
+      <h3>What can cost extra</h3>
+      <ul>
+        <li>Active clients beyond the Solo cap of 10: switch to Clinic at $10 per active client</li>
+        <li>Staff beyond the Solo cap of 3: switch to Clinic, where staff are unlimited</li>
+        <li>Anything else: nothing. No setup fee, no per-seat fee, no add-on modules, and no contract</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sample-note">
+    <strong>Sample clients are free.</strong> Add a sample client to try Lumen Steps with realistic data, or to train new staff. Sample clients are never billed and never count toward your active-client total or your Solo cap, and you can remove them whenever you like.
+  </div>
+</section>
+
 <!-- COMPARISON TABLE -->
 <section class="compare-section">
   <p class="section-label">Side by Side</p>
@@ -238,6 +327,8 @@
         <tr><td>Behavior tracking &amp; session notes</td><td class="yes-icon">✓</td><td class="yes-icon">✓</td></tr>
         <tr><td>Document storage &amp; reports</td><td class="yes-icon">✓</td><td class="yes-icon">✓</td></tr>
         <tr><td>Scheduling</td><td class="yes-icon">✓</td><td class="yes-icon">✓</td></tr>
+        <tr><td>Parent portal</td><td class="yes-icon">✓</td><td class="yes-icon">✓</td></tr>
+        <tr><td>Sample clients (never billed)</td><td class="yes-icon">✓</td><td class="yes-icon">✓</td></tr>
         <tr><td>HIPAA-compliant, BAA available</td><td class="yes-icon">✓</td><td class="yes-icon">✓</td></tr>
         <tr><td>Free trial</td><td>1 month</td><td>3 months</td></tr>
         <tr><td>Contract required</td><td>None</td><td>None</td></tr>
@@ -253,6 +344,10 @@
   <div class="faq-item">
     <h3>Is there a setup fee?</h3>
     <p>No. There's no setup fee on either plan — you start your free trial (1 month on Solo, 3 months on Clinic) and only add payment once you're ready to continue.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do sample clients cost anything?</h3>
+    <p>No. Sample clients are free, are never billed, and don't count toward your active-client total or the Solo cap of 10. Use them to test features or train new staff, then remove them when you're done.</p>
   </div>
   <div class="faq-item">
     <h3>Can I switch between Solo and Clinic later?</h3>
